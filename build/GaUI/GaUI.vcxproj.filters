@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2a7b28c1-b2a2-40a2-99cd-46e1dc9c63be}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{8f3643e4-dc9c-4e7f-90db-9c2a66ed6153}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{56d949bb-5e3f-4d1c-8a0c-846ff987c9bf}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;manifest</Extensions>
+    </Filter>
+    <Filter Include="GaUI">
+      <UniqueIdentifier>{c52f13aa-cd4d-4780-b791-f80b6d500609}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GaUI\Base">
+      <UniqueIdentifier>{cffb58ab-82e7-4f67-80a8-bcce9fe56c28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GaUI\Layout">
+      <UniqueIdentifier>{3f529e7b-e285-44cc-9c9a-cc4598ba427b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GaUI\Event">
+      <UniqueIdentifier>{b30f101f-425e-4126-867b-8bfd9b0dd4bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GaUI\Control">
+      <UniqueIdentifier>{40fd23b7-64a6-4e28-9fca-ecaa86ec89da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GaUI\Element">
+      <UniqueIdentifier>{d9f5244b-fdcf-4b64-aa66-fa9061c39903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GaUI\Base\STDEx">
+      <UniqueIdentifier>{68255cdd-e8e8-43f0-93c7-992228421724}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GaUI\Common">
+      <UniqueIdentifier>{949fee56-a4d7-47d9-8aec-d0bd9e16b485}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GaUI\Base\STDEx\thr">
+      <UniqueIdentifier>{9ed8a597-820d-4e54-afa9-a20d0d7edcac}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GaUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GaWindowNCHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GaScreenHelp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositionBase.cpp">
+      <Filter>GaUI\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="StackComposition.cpp">
+      <Filter>GaUI\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicComposition.cpp">
+      <Filter>GaUI\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="GaControl.cpp">
+      <Filter>GaUI\Control</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GaUIView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AboutDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GaWindow.h">
+      <Filter>GaUI\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="GaWindowNCHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MessageDefined.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GaUI_Type.h">
+      <Filter>GaUI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GaUI_Type_Size.inl">
+      <Filter>GaUI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="GaScreenHelp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElementInterface.h">
+      <Filter>GaUI\Element</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositionBase.h">
+      <Filter>GaUI\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="StackComposition.h">
+      <Filter>GaUI\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicComposition.h">
+      <Filter>GaUI\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="GaControl.h">
+      <Filter>GaUI\Control</Filter>
+    </ClInclude>
+    <ClInclude Include="defines.h">
+      <Filter>GaUI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="EventCode.h">
+      <Filter>GaUI\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>GaUI\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="type_traits_ex.h">
+      <Filter>GaUI\Base\STDEx</Filter>
+    </ClInclude>
+    <ClInclude Include="EventFactory.h">
+      <Filter>GaUI\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="memory.h">
+      <Filter>GaUI\Base\STDEx</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GaUI.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\toolbar.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\GaUI.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GaUI_Type_Point.inl">
+      <Filter>GaUI\Base</Filter>
+    </None>
+    <None Include="GaUI_Type_Rect.inl">
+      <Filter>GaUI\Base</Filter>
+    </None>
+  </ItemGroup>
+</Project>
