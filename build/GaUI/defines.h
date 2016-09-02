@@ -1,7 +1,6 @@
 #ifndef defines_h__
 #define defines_h__
 
-
 #if (defined _MSC_VER )&&(_MSC_VER <= 1600)
 #define __USE_STD_EX__
 #endif

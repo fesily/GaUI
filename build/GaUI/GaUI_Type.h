@@ -10,6 +10,12 @@
 
 #ifndef GaUITYPE_H__
 #define GaUITYPE_H__
+#include <string>
+#ifdef _MSC_VER
+#include <stdint.h>
+#else
+#error "还没写"
+#endif // MSVC
 namespace GaUI
 {
 	namespace Basetype
@@ -303,11 +309,111 @@ namespace GaUI
 				_In_ int nMultiplier,
 				_In_ int nDivisor) const throw();
 		};
+		//////////////////////////////////////////////////////////////////////////
+		class Color
+		{
+		public:
+			union 
+			{
+				struct 
+				{
+					unsigned char r;
+					unsigned char g;
+					unsigned char b;
+					unsigned char a;
+				};
+				uint32_t value;
+			};
+		public:
+			Color()
+				:r(0), g(0), b(0), a(255)
+			{}
+			Color(unsigned char _r, unsigned char _g, unsigned char _b, unsigned char _a = 255)
+				:r(_r),g(_g),b(_b),a(_a)
+			{}
+			
+			operator uint32_t&()
+			{//为了使用hash
+				return value;
+			}
+			inline int32_t Compare(const Color& cr)const
+			{
+				return value - cr.value;
+			}
+			inline bool operator==(const Color& cr)const
+			{
+				return Compare(cr) == 0;
+			}
+			inline bool operator!=(const Color& cr)const
+			{
+				return Compare(cr) != 0;
+			}
+			inline bool operator<(const Color& cr)const
+			{
+				return Compare(cr) < 0;
+			}
+			inline bool operator<=(const Color& cr)const
+			{
+				return Compare(cr) <= 0;
+			}
+			inline bool operator>(const Color& cr)const
+			{
+				return Compare(cr) > 0;
+			}
+			inline bool operator>=(const Color& cr)const
+			{
+				return Compare(cr) >= 0;
+			}
+		};
+		class FontProperties
+		{
+		public:
+			FontProperties()
+				:size(0)
+				,bold(false)
+				,italic(false)
+				,underline(false)
+				,strikeline(false)
+				,antialias(true)
+				,verticalAntialias(false)
+			{
+
+			}
+		public:
+			inline bool Compare(const FontProperties& value)
+			{
+				if(fontFamily != value.fontFamily
+				   && size == value.size
+				   && bold == value.bold
+				   && italic == value.italic
+				   && underline == value.underline
+				   && strikeline == value.strikeline
+				   && antialias == value.antialias
+				   && verticalAntialias == value.verticalAntialias)
+					return true;
+				return false;
+			}
+			inline bool operator==(const FontProperties& value)
+			{
+				return Compare(value);
+			}
+		public:
+			std::wstring fontFamily;//字体名
+			int32_t size;//字体大小
+			bool bold;//粗体
+			bool italic;//斜体
+			bool underline;//下划线
+			bool strikeline;//有向线
+			bool antialias;//反锯齿
+			bool verticalAntialias;//垂直反锯齿
+		};
 	}
 
 	typedef Basetype::CPoint CPoint;
 	typedef Basetype::CRect CRect;
 	typedef Basetype::CSize CSize;
+	typedef Basetype::Color Color;
+	typedef Basetype::FontProperties FontProperties;
 }
 
 #include "GaUI_Type_Size.inl"

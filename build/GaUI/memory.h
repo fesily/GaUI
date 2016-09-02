@@ -29,6 +29,7 @@ namespace std
 		void>::type make_unique(_Types&&...)
 	{
 		static_assert(false,"这种调用不支持");
+		return (unique_ptr<_Ty>(new _Ty(_STD forward<_Types>(_Args)...)));
 	}
 
 }

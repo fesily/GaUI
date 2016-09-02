@@ -4,53 +4,54 @@
 #include "CompositionBase.h"
 namespace GaUI
 {
-
-	GaControl::GaControl(IControlStyle* pStyle)
-		:m_pComposition(pStyle->GetComposition())
-		,m_pEventManager(nullptr)
+	namespace Control
 	{
-
-	}
-
-	GaControl::~GaControl()
-	{
-		delete m_pComposition;
-	}
-
-	Event::GeneralEventManager* GaControl::GetEventManager()
-	{ 
-		if(!m_pEventManager)
+		GaControl::GaControl(IControlStyle* pStyle)
+			:m_pComposition(pStyle->GetComposition())
+			, m_pEventManager(nullptr)
 		{
-			m_pEventManager = new Event::GeneralEventManager;
-		}
-		return m_pEventManager;
-	}
 
-	bool GaControl::AddChild(GaControl* pControl)
-	{
-		auto iter = m_listControl.lower_bound(pControl);
-		if(iter != m_listControl.end())
+		}
+
+		GaControl::~GaControl()
 		{
-			m_listControl.emplace(pControl);
-			return true;
+			delete m_pComposition;
 		}
-		return false;
-	}
 
-	bool GaControl::RemoveChild(GaControl* pControl)
-	{
-		auto iter = m_listControl.find(pControl);
-		if(iter != m_listControl.end())
+		Event::GeneralEventManager* GaControl::GetEventManager()
 		{
-			m_listControl.erase(iter);
-			return true;
+			if(!m_pEventManager)
+			{
+				m_pEventManager = new Event::GeneralEventManager;
+			}
+			return m_pEventManager;
 		}
-		return false;
-	}
 
-	std::size_t GaControl::GetChildCount() const
-	{
-		return m_listControl.size();
-	}
+		bool GaControl::AddChild(GaControl* pControl)
+		{
+			auto iter = m_listControl.lower_bound(pControl);
+			if(iter != m_listControl.end())
+			{
+				m_listControl.emplace(pControl);
+				return true;
+			}
+			return false;
+		}
 
+		bool GaControl::RemoveChild(GaControl* pControl)
+		{
+			auto iter = m_listControl.find(pControl);
+			if(iter != m_listControl.end())
+			{
+				m_listControl.erase(iter);
+				return true;
+			}
+			return false;
+		}
+
+		std::size_t GaControl::GetChildCount() const
+		{
+			return m_listControl.size();
+		}
+	}
 }

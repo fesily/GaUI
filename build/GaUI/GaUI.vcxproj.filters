@@ -40,6 +40,12 @@
     <Filter Include="GaUI\Base\STDEx\thr">
       <UniqueIdentifier>{9ed8a597-820d-4e54-afa9-a20d0d7edcac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GaUI\Control\Style">
+      <UniqueIdentifier>{ade8c65b-cff5-49e3-91ef-bcce6cdd5bbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GaUI\Element\GDI">
+      <UniqueIdentifier>{13f8c92e-493c-46a3-8368-eae3af222e23}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -65,6 +71,24 @@
     </ClCompile>
     <ClCompile Include="GaControl.cpp">
       <Filter>GaUI\Control</Filter>
+    </ClCompile>
+    <ClCompile Include="GaButtonStyle.cpp">
+      <Filter>GaUI\Control\Style</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>GaUI\Element</Filter>
+    </ClCompile>
+    <ClCompile Include="Element.cpp">
+      <Filter>GaUI\Element</Filter>
+    </ClCompile>
+    <ClCompile Include="GDIRenderer.cpp">
+      <Filter>GaUI\Element\GDI</Filter>
+    </ClCompile>
+    <ClCompile Include="GDIInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WinGDI.cpp">
+      <Filter>GaUI\Element\GDI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -133,6 +157,30 @@
     </ClInclude>
     <ClInclude Include="memory.h">
       <Filter>GaUI\Base\STDEx</Filter>
+    </ClInclude>
+    <ClInclude Include="GaButtonStyle.h">
+      <Filter>GaUI\Control\Style</Filter>
+    </ClInclude>
+    <ClInclude Include="GaBaseClass.h">
+      <Filter>GaUI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Element.h">
+      <Filter>GaUI\Element</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>GaUI\Element</Filter>
+    </ClInclude>
+    <ClInclude Include="GDIRenderer.h">
+      <Filter>GaUI\Element\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>GaUI\Element</Filter>
+    </ClInclude>
+    <ClInclude Include="GDIInterface.h">
+      <Filter>GaUI\Element\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="WinGDI.h">
+      <Filter>GaUI\Element\GDI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
