@@ -32,8 +32,11 @@ namespace GaUI
 		{
 		public:
 			virtual IRendererFactory* GetFactory() = 0;
+			virtual void Initialize(IElement* element) = 0;
+			virtual void Finalize() = 0;
 			virtual void SetRenderTarget(IRenderTarget* renderTarget) = 0;
 			virtual void Render(CRect bounds) = 0;
+			virtual void OnElementStateChanged() = 0;
 			virtual CSize GetMinSize() = 0;
 		};
 

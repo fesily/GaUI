@@ -11,10 +11,10 @@ namespace GaUI
 		/*
 		使用相对坐标,既子窗口的位置是父窗口客户区0,0点为坐标原点
 		*/
+		using namespace Element;
 		class Composition
 		{
 		public:
-			typedef CRect CMargin;
 			typedef std::list<Composition*> CompositionList;
 			enum eLimitMode
 			{
@@ -45,10 +45,11 @@ namespace GaUI
 			bool RemoveChild(Composition* child);
 			bool MoveChild(Composition* child, int32_t newIndex);
 
-#if 0
-			std::shared_ptr<IElement> GetElement();
-			void SetElement(std::shared_ptr<IElement> element);
 
+			std::shared_ptr<IElement> GetElement();
+			void SetElement(IElement* element);
+			void SetElement(std::shared_ptr<IElement> element);
+#if 1
 			bool GetVisible();
 			void SetVisible(bool visible);
 

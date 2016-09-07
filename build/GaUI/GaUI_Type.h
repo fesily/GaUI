@@ -10,6 +10,7 @@
 
 #ifndef GaUITYPE_H__
 #define GaUITYPE_H__
+#include "defines.h"
 #include <string>
 #ifdef _MSC_VER
 #include <stdint.h>
@@ -332,10 +333,23 @@ namespace GaUI
 				:r(_r),g(_g),b(_b),a(_a)
 			{}
 			
-			operator uint32_t&()
+			operator uint32_t()throw()
 			{//为了使用hash
 				return value;
 			}
+			operator uint32_t()const throw()
+			{//为了使用hash
+				return value;
+			}
+			operator COLORREF()throw()
+			{
+				return RGB(r, g, b);
+			}
+			operator COLORREF()const throw()
+			{
+				return RGB(r, g, b);
+			}
+
 			inline int32_t Compare(const Color& cr)const
 			{
 				return value - cr.value;
@@ -397,6 +411,10 @@ namespace GaUI
 			{
 				return Compare(value);
 			}
+			inline bool operator!=(const FontProperties& value)
+			{
+				return !Compare(value);
+			}
 		public:
 			std::wstring fontFamily;//字体名
 			int32_t size;//字体大小
@@ -409,12 +427,51 @@ namespace GaUI
 		};
 	}
 
-	typedef Basetype::CPoint CPoint;
-	typedef Basetype::CRect CRect;
-	typedef Basetype::CSize CSize;
-	typedef Basetype::Color Color;
-	typedef Basetype::FontProperties FontProperties;
+	namespace BaseEnum
+	{
+		enum Alignment
+		{
+			Left = 0,
+			Top = 0,
+			Center = 1,
+			Right = 2,
+			Bottom = 2,
+		};
+	}
+	using namespace Basetype;
+	using namespace BaseEnum;
+	typedef CRect CMargin;
+
+	std::wstring C2W(const char *pc)
+	{
+		std::wstring val = L"";
+
+		if(nullptr == pc)
+		{
+			return val;
+		}
+		//size_t size_of_ch = strlen(pc)*sizeof(char);
+		//size_t size_of_wc = get_wchar_size(pc);
+		size_t size_of_wc;
+		size_t destlen = mbstowcs(0, pc, 0);
+		if(destlen == (size_t)(-1))
+		{
+			return val;
+		}
+		size_of_wc = destlen + 1;
+		wchar_t * pw = new wchar_t[size_of_wc];
+		mbstowcs(pw, pc, size_of_wc);
+		val = pw;
+		delete pw;
+		return val;
+	}
 }
+template<>
+class std::hash<GaUI::Color>
+	:public _Bitwise_hash<uint32_t>
+{
+
+};
 
 #include "GaUI_Type_Size.inl"
 #include "GaUI_Type_Point.inl"

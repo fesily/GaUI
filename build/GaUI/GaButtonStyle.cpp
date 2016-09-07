@@ -9,7 +9,20 @@ namespace GaUI
 	{
 		namespace Style
 		{
-			GaButtonElement GaButtonElement::Create()
+			void CreateSolidLabelElement(Element::GaSolidLabelElement*& element, Layout::BoundsComposition*& composition,
+										 Alignment horizontal, Alignment vertical)
+			{
+				element = Element::GaSolidLabelElement::Create();
+				element->SetAlignments(horizontal, vertical);
+
+				composition = new Layout::BoundsComposition;
+				composition->SetElement(element);
+				composition->m_margin = CMargin();
+				composition->m_eLimitMode = Layout::Composition::Limit2Element;
+				composition->m_alignment2Parent = CMargin();
+
+			}
+			GaButtonElement GaButtonElement::Create(Alignment horizontal, Alignment vertical)
 			{
 				GaButtonElement button;
 				{
@@ -18,9 +31,35 @@ namespace GaUI
 				}
 				
 				{
+					auto boardElement = Element::GaSolidBorderElement::Create();
+					button.boardElement = boardElement;
+
+					auto boardComposition = new Layout::BoundsComposition;
+					button.mainComposition->AddChild(boardComposition);
+					boardComposition->AlignmentToParentEmpty();
+					boardComposition->SetElement(boardElement);
+				}
+
+				{
+					auto bkElment = Element::GaGradientBackgroundElement::Create();
+					button.backgroundElement = bkElment;
+					bkElment->m_eDirection = Element::GaGradientBackgroundElement::Vertical;
+					bkElment->m_eShape = Element::Rectangle;
+
+					auto bkComposition = new Layout::BoundsComposition;
+					button.backgroundComposition = bkComposition;
+					button.mainComposition->AddChild(bkComposition);
+					bkComposition->m_alignment2Parent = CMargin(1, 1, 1, 1);
+					bkComposition->SetElement(bkElment);
+				}
+
+				{
+					CreateSolidLabelElement(button.textElement, button.textComposition, horizontal, vertical);
+					button.mainComposition->AddChild(button.textComposition);
 				}
 				return button;
 			}
+			//////////////////////////////////////////////////////////////////////////
 			GabuttonStyle::GabuttonStyle()
 			{
 				m_composition = GaButtonElement::Create();

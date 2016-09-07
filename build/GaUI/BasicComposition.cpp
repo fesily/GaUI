@@ -84,6 +84,11 @@ namespace GaUI
 			m_alignment2Parent.SetRect(-1, -1, -1, -1);
 		}
 
+		void BoundsComposition::AlignmentToParentEmpty()
+		{
+			m_alignment2Parent.SetRect(0, 0, 0, 0);
+		}
+
 		bool BoundsComposition::IsAlignedToParent()
 		{
 			return !(m_alignment2Parent.left == -1 && m_alignment2Parent.top == -1 &&

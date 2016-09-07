@@ -6,7 +6,7 @@
 #endif
 
 #ifdef __USE_STD_EX__
-#define  ENUM_CLASS_BEGIN(name) class name { enum{
+#define  ENUM_CLASS_BEGIN(name) class name { enum name{
 #define ENUM_CLASS_END() };};
 #else
 #define  ENUM_CLASS_BEGIN(name) enum class name{

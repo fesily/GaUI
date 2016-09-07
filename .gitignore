@@ -27,3 +27,11 @@
 *.exe
 *.out
 *.app
+
+*.db
+*.opendb
+build/GaUI/x64
+build/GaUI/debug
+build/ipch
+build/debug
+build/x64

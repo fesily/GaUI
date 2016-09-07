@@ -19,7 +19,8 @@ namespace GaUI
 		namespace Element_GDI
 		{
 			using namespace Window::GDI;
-			class IGDITarget
+
+			class IGDIRenderTarget
 				:public IRenderTarget
 			{
 			public:
@@ -41,6 +42,79 @@ namespace GaUI
 // 				virtual void DestroyBitmap(const Color& rc) = 0;
 			};
 			extern IGDIResourceManager* GetGDIResourcesManager();
+#if 0
+			namespace Detail
+			{
+				//自动引用计数基类
+				template<typename TClassChild, typename TResource,typename TKey>
+				class ARCResource_base
+					:public std::shared_ptr<TResource>
+				{
+				public:
+					typedef typename std::remove_reference<TKey>::type key_type;
+					typedef key_type& key_referece;
+					typedef const key_type& key_const_referece;
+					typedef std::shared_ptr<TResource> base_type;
+				public:
+					ARCResource_base(key_const_referece key)
+						:_Mykey(key)
+					{
+						Create();
+					}
+					~ARCResource_base() 
+					{
+						Destory();
+					}
+
+					void ResetResource()
+					{
+						Create();
+						Destory();
+					}
+				protected:
+					inline void Create()
+					{
+						auto p = static_cast<TClassChild*>(this);
+						p->Create();
+					};
+					inline void Destory()
+					{
+						auto p = static_cast<TClassChild*>(this);
+						p->Destory();
+					};
+					inline operator key_referece()
+					{
+						return _Mykey;
+					}
+					inline operator key_referece()const
+					{
+						return _Mykey;
+					}
+				protected:
+					key_const_referece _Mykey;
+				};
+
+
+				class ARCPen
+					:public ARCResource_base<ARCPen, Pen, Color>
+				{
+				public:
+					ARCPen(key_const_referece key);
+					void Create();
+					void Destory();
+				};
+
+				class ARCBrush
+					:public ARCResource_base<ARCBrush, Brush, Color>
+				{
+				public:
+					ARCBrush(key_const_referece key);
+					void Create();
+					void Destory();
+				};
+			}
+			using namespace Detail;
+#endif
 		}
 	}
 }

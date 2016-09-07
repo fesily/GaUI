@@ -8,9 +8,9 @@ namespace GaUI
 	}
 	namespace Element
 	{
-		class SolidBorderElement;
-		class SolidLabelElement;
-		class GradientBackgroundElement;
+		class GaSolidBorderElement;
+		class GaSolidLabelElement;
+		class GaGradientBackgroundElement;
 	}
 	namespace Control
 	{
@@ -18,14 +18,14 @@ namespace GaUI
 		{
 			struct GaButtonElement
 			{
-				Element::SolidBorderElement* boardElement;//边框图元
-				Element::GradientBackgroundElement* backgroundElement;//背景图元
-				Element::SolidLabelElement* textElement;//文字图元
+				Element::GaSolidBorderElement* boardElement;//边框图元
+				Element::GaGradientBackgroundElement* backgroundElement;//背景图元
+				Element::GaSolidLabelElement* textElement;//文字图元
 				Layout::BoundsComposition* mainComposition;//主布局器
 				Layout::BoundsComposition* textComposition;//文字布局器
 				Layout::BoundsComposition* backgroundComposition;//背景布局器
 
-				static GaButtonElement Create();
+				static GaButtonElement Create(Alignment horizontal, Alignment vertical);
 			};
 			class GabuttonStyle
 				:public Gabutton::IButtonStyle

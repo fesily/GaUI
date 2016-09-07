@@ -53,5 +53,18 @@ namespace GaUI
 		{
 			return m_listControl.size();
 		}
+		//////////////////////////////////////////////////////////////////////////
+
+		Gabutton::Gabutton(IButtonStyle* pStyle)
+			:GaControl(pStyle)
+		{
+
+		}
+
+		Gabutton::~Gabutton()
+		{
+
+		}
+
 	}
 }

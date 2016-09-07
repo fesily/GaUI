@@ -57,9 +57,6 @@
     <ClCompile Include="GaWindowNCHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GaScreenHelp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CompositionBase.cpp">
       <Filter>GaUI\Layout</Filter>
     </ClCompile>
@@ -84,11 +81,14 @@
     <ClCompile Include="GDIRenderer.cpp">
       <Filter>GaUI\Element\GDI</Filter>
     </ClCompile>
-    <ClCompile Include="GDIInterface.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="WinGDI.cpp">
       <Filter>GaUI\Element\GDI</Filter>
+    </ClCompile>
+    <ClCompile Include="GDIInterface.cpp">
+      <Filter>GaUI\Element\GDI</Filter>
+    </ClCompile>
+    <ClCompile Include="GaScreenHelp.cpp">
+      <Filter>GaUI\Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -121,9 +121,6 @@
     </ClInclude>
     <ClInclude Include="GaUI_Type_Size.inl">
       <Filter>GaUI\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="GaScreenHelp.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ElementInterface.h">
       <Filter>GaUI\Element</Filter>
@@ -181,6 +178,12 @@
     </ClInclude>
     <ClInclude Include="WinGDI.h">
       <Filter>GaUI\Element\GDI</Filter>
+    </ClInclude>
+    <ClInclude Include="GaScreenHelp.h">
+      <Filter>GaUI\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Property.h">
+      <Filter>GaUI\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

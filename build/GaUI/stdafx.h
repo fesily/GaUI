@@ -32,4 +32,5 @@ extern CAppModule _Module;
 #endif
 
 #include "GaUI_Type.h"
+#include "Property.h"
 #include "GaWindow.h"

@@ -15,14 +15,17 @@ namespace GaUI
 			public:
 				IRenderer* Create()override
 				{
-					return new Renderer;
+					auto pRenderer =  new Renderer;
+					pRenderer->m_factory = this;
+					return pRenderer;
 				}
 			};
+			typedef Factory FactoryType;
 		protected:
-			IRendererEx(IRendererFactory* pFactory)
-				:m_factory(pFactory)
-				,m_element(nullptr)
-				,m_renderTarget(nullptr)
+			IRendererEx()
+				: m_factory(nullptr)
+				, m_element(nullptr)
+				, m_renderTarget(nullptr)
 			{}
 		public:
 			static void Register()
@@ -46,13 +49,17 @@ namespace GaUI
 			void SetRenderTarget(IRenderTarget* pRenderTarget)override
 			{
 				RenderTarget* old = m_renderTarget;
-				pRenderTarget = static_cast<RenderTarget*>(pRenderTarget);
-				RenderTargetChangedInternal(oldRenderTarget, renderTarget);
+				m_renderTarget = static_cast<RenderTarget*>(pRenderTarget);
+				RenderTargetChangedInternal(old, m_renderTarget);
 			}
-			CSize GetMinSzie()override
+			CSize GetMinSize()override
 			{
 				return m_minSize;
 			}
+		public:
+			virtual void InitializeInternal() {};
+			virtual void FinalizeInternal() {};
+			virtual void RenderTargetChangedInternal(RenderTarget* oldTarget, RenderTarget* newTarget) {};
 		protected:
 			IRendererFactory*	m_factory;
 			Element*			m_element;

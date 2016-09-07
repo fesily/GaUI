@@ -4,6 +4,7 @@ namespace GaUI
 {
 	namespace Layout
 	{
+		class INativeWindow;
 		class WindowComposition
 			:public Site
 		{
@@ -22,6 +23,7 @@ namespace GaUI
 			CRect GetPreferredBounds()override;
 			CRect GetBounds()override;
 			void ClearAlignmentToParent();
+			void AlignmentToParentEmpty();
 			bool IsAlignedToParent();
 		public:
 			CRect m_rcCompositionRounds;//当前窗口位置

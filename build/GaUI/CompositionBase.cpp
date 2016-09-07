@@ -96,6 +96,33 @@ namespace GaUI
 			return false;
 		}
 
+		std::shared_ptr<GaUI::Element::IElement> Composition::GetElement()
+		{
+			return m_pElement;
+		}
+
+		void Composition::SetElement(IElement * element)
+		{
+			SetElement(std::make_shared<IElement>(element));
+		}
+
+		void Composition::SetElement(std::shared_ptr<IElement> element)
+		{
+			if(m_pElement)
+			{
+				auto renderer = m_pElement->GetRender();
+				if(renderer)
+					renderer->SetRenderTarget(nullptr);
+			}
+			m_pElement = element;
+			if(m_pElement)
+			{
+				auto renderer = m_pElement->GetRender();
+				if(renderer)
+					renderer->SetRenderTarget(m_pRenderTarget);
+			}
+		}
+
 		IRenderTarget* Composition::GetRenderTarget()
 		{
 			return m_pRenderTarget;
