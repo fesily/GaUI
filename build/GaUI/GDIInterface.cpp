@@ -104,12 +104,6 @@ namespace GaUI
 
 		namespace Element_GDI
 		{
-			class GDIResourceManager;
-			GDIResourceManager* g_GDIResourceManager = nullptr;
-			IGDIResourceManager* GetGDIResourcesManager()
-			{
-				return g_GDIResourceManager;
-			}
 
 #if 0
 			namespace Detail
@@ -202,7 +196,11 @@ namespace GaUI
 				CachedBrushAllocator m_brushs;
 			};
 
-
+			GDIResourceManager* g_GDIResourceManager = nullptr;
+			IGDIResourceManager* GetGDIResourcesManager()
+			{
+				return g_GDIResourceManager;
+			}
 		}
 	}
 }

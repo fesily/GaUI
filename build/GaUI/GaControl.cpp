@@ -7,7 +7,8 @@ namespace GaUI
 	namespace Control
 	{
 		GaControl::GaControl(IControlStyle* pStyle)
-			:m_pComposition(pStyle->GetComposition())
+			:m_pContrlStyle(pStyle)
+			,m_pComposition(pStyle->GetComposition())
 			, m_pEventManager(nullptr)
 		{
 
@@ -16,6 +17,7 @@ namespace GaUI
 		GaControl::~GaControl()
 		{
 			delete m_pComposition;
+			m_pComposition = nullptr;
 		}
 
 		Event::GeneralEventManager* GaControl::GetEventManager()
@@ -56,12 +58,81 @@ namespace GaUI
 		//////////////////////////////////////////////////////////////////////////
 
 		Gabutton::Gabutton(IButtonStyle* pStyle)
+			: GaControl(pStyle)
+			, m_isPressing(false)
+			, m_isHoving(false)
+			, m_eStatus(Noraml)
+
+		{
+			m_pButtonStyle = pStyle;
+			pStyle->Transf(m_eStatus);
+			//°ó¶¨ÏûÏ¢
+			GetEventManager()->mouse_enter.attach(this, &Gabutton::OnMouseEnter);
+			GetEventManager()->mouse_leave.attach(this, &Gabutton::OnMouseLeave);
+			GetEventManager()->mouse_down.attach(this, &Gabutton::OnLButtonDown);
+			GetEventManager()->mouse_up.attach(this, &Gabutton::OnLButtonUp);
+		}
+
+		Gabutton::~Gabutton()
+		{
+
+		}
+
+		void Gabutton::UpdateControlState()
+		{
+			eStatus newState = Noraml;
+			if(m_isPressing)
+			{
+				if(m_isHoving)
+					newState = Pressed;
+				else
+					newState = Active;
+			}
+			else
+			{
+				if(m_isHoving)
+					newState = Active;
+				else
+					newState = Noraml;
+			}
+			if(m_eStatus != newState)
+			{
+				m_eStatus = newState;
+				m_pButtonStyle->Transf(m_eStatus);
+			}
+		}
+
+		void Gabutton::OnMouseEnter()
+		{
+			m_isHoving = true;
+			UpdateControlState();
+		}
+
+		void Gabutton::OnMouseLeave()
+		{
+			m_isHoving = false;
+			UpdateControlState();
+		}
+
+		void Gabutton::OnLButtonDown()
+		{
+			m_isPressing = true;
+			UpdateControlState();
+		}
+
+		void Gabutton::OnLButtonUp()
+		{
+			m_isPressing = false;
+			UpdateControlState();
+		}
+		//////////////////////////////////////////////////////////////////////////
+		GaControlHost::GaControlHost(GaControl::IControlStyle* pStyle)
 			:GaControl(pStyle)
 		{
 
 		}
 
-		Gabutton::~Gabutton()
+		GaControlHost::~GaControlHost()
 		{
 
 		}

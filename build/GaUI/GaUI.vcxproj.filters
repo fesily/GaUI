@@ -46,15 +46,15 @@
     <Filter Include="GaUI\Element\GDI">
       <UniqueIdentifier>{13f8c92e-493c-46a3-8368-eae3af222e23}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GaUI\NativeWindow">
+      <UniqueIdentifier>{99fb081d-122d-4a28-81f5-bb47c2f2234b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GaUI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GaWindowNCHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CompositionBase.cpp">
@@ -89,6 +89,12 @@
     </ClCompile>
     <ClCompile Include="GaScreenHelp.cpp">
       <Filter>GaUI\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="GaWindowNCHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NativeWindowInterface.cpp">
+      <Filter>GaUI\NativeWindow</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +190,12 @@
     </ClInclude>
     <ClInclude Include="Property.h">
       <Filter>GaUI\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="NativeWindowInterface.h">
+      <Filter>GaUI\NativeWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="EventBase.h">
+      <Filter>GaUI\Event</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

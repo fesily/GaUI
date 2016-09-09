@@ -28,6 +28,6 @@ namespace GaUI
 		elapse,				///< Unoperational events? . A widget received a tick that is sended by timer.
 
 		end					///< End indicator, it's not an event.
-		ENUM_CLASS_END()
+	ENUM_CLASS_END()
 }
 #endif // EventCode_h__

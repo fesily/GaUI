@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "BasicComposition.h"
-
+#include "NativeWindowInterface.h"
 namespace GaUI
 {
 	namespace Layout

@@ -2,16 +2,19 @@
 #include "CompositionBase.h"
 namespace GaUI
 {
-	namespace Layout
+	namespace Native
 	{
 		class INativeWindow;
+	}
+	namespace Layout
+	{
 		class WindowComposition
 			:public Site
 		{
 		public:
 			CRect GetBounds()override;
 		public:
-			INativeWindow*	 m_pAttachedWindow;
+			Native::INativeWindow*	 m_pAttachedWindow;
 		};
 
 		class BoundsComposition

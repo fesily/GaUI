@@ -101,9 +101,9 @@ namespace GaUI
 			return m_pElement;
 		}
 
-		void Composition::SetElement(IElement * element)
+		void Composition::SetElement(IElement* element)
 		{
-			SetElement(std::make_shared<IElement>(element));
+			SetElement(std::shared_ptr<IElement>(element));
 		}
 
 		void Composition::SetElement(std::shared_ptr<IElement> element)

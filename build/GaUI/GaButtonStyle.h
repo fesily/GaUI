@@ -25,7 +25,7 @@ namespace GaUI
 				Layout::BoundsComposition* textComposition;//文字布局器
 				Layout::BoundsComposition* backgroundComposition;//背景布局器
 
-				static GaButtonElement Create(Alignment horizontal, Alignment vertical);
+				static GaButtonElement Create(Alignment horizontal = Alignment::Center, Alignment vertical = Alignment::Center);
 			};
 			class GabuttonStyle
 				:public Gabutton::IButtonStyle
@@ -34,10 +34,10 @@ namespace GaUI
 				GabuttonStyle();
 
 				Layout::Composition* GetComposition()override;
-				void Transf(Gabutton::eState newState)override;
+				void Transf(Gabutton::eStatus newState)override;
 			protected:
 				GaButtonElement m_composition;
-				Gabutton::eState m_eState;
+				Gabutton::eStatus m_eState;
 			};
 		}
 	}

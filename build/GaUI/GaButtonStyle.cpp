@@ -20,7 +20,6 @@ namespace GaUI
 				composition->m_margin = CMargin();
 				composition->m_eLimitMode = Layout::Composition::Limit2Element;
 				composition->m_alignment2Parent = CMargin();
-
 			}
 			GaButtonElement GaButtonElement::Create(Alignment horizontal, Alignment vertical)
 			{
@@ -70,17 +69,22 @@ namespace GaUI
 				return m_composition.mainComposition;
 			}
 
-			void GabuttonStyle::Transf(Gabutton::eState newState)
+			void GabuttonStyle::Transf(Gabutton::eStatus newStatus)
 			{
-				if(m_eState != newState)
+				if(m_eState != newStatus)
 				{
-					m_eState = newState;
-					
+					m_eState = newStatus;
+					switch(m_eState)
+					{
+					case Control::Gabutton::Noraml:
+						break;
+					case Control::Gabutton::Active:
+						break;
+					case Control::Gabutton::Pressed:
+						break;
+					}
 				}
 			}
-
-		
-
 		}
 	}
 }

@@ -442,7 +442,7 @@ namespace GaUI
 	using namespace BaseEnum;
 	typedef CRect CMargin;
 
-	std::wstring C2W(const char *pc)
+	static std::wstring C2W(const char *pc)
 	{
 		std::wstring val = L"";
 
