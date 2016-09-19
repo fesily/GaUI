@@ -212,6 +212,9 @@
     <ClCompile Include="GaWindowNCHandler.cpp" />
     <ClCompile Include="GDIInterface.cpp" />
     <ClCompile Include="GDIRenderer.cpp" />
+    <ClCompile Include="GraphicesHost.cpp" />
+    <ClCompile Include="NativeApp.cpp" />
+    <ClCompile Include="NativeWindow.cpp" />
     <ClCompile Include="NativeWindowInterface.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="StackComposition.cpp" />
@@ -244,10 +247,13 @@
     <ClInclude Include="GaWindow.h" />
     <ClInclude Include="GaWindowNCHandler.h" />
     <ClInclude Include="GDIInterface.h" />
+    <ClInclude Include="GraphicesHost.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="memory.h" />
     <ClInclude Include="MessageDefined.h" />
     <ClInclude Include="GDIRenderer.h" />
+    <ClInclude Include="NativeApp.h" />
+    <ClInclude Include="NativeWindow.h" />
     <ClInclude Include="NativeWindowInterface.h" />
     <ClInclude Include="Property.h" />
     <ClInclude Include="Renderer.h" />

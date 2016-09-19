@@ -13,4 +13,8 @@
 #define ENUM_CLASS_END() };
 #endif // __USE_STD_EX__
 
+
+#define SAFE_DELETE(ptr) if (ptr) { delete ptr; ptr = nullptr; }
+#define SAFE_DELETE_AR(ptr) if (ptr) { delete [] ptr; ptr = nullptr; }
+
 #endif // defines_h__

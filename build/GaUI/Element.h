@@ -17,7 +17,7 @@ namespace GaUI
 					if(des != source)
 					{
 						des = source;
-						return	true;
+						return true;
 					}
 					return false;
 				}
@@ -140,7 +140,7 @@ namespace GaUI
 					{
 						TElement* element = new TElement;
 						element->m_pFactory = this;
-						IRendererFactory* renderFactory = GetResourcesManager()->GetRendererFactory(GetElementTypeName());
+						IRendererFactory* renderFactory = GetGraphicsResourcesManager()->GetRendererFactory(GetElementTypeName());
 						if(renderFactory)
 						{
 							element->m_renderer = renderFactory->Create();
@@ -155,7 +155,7 @@ namespace GaUI
 				}
 				static TElement* Create()
 				{
-					return dynamic_cast<TElement*>(GetResourcesManager()->GetElementFactory(TElement::GetElementTypeName())->Create());
+					return dynamic_cast<TElement*>(GetGraphicsResourcesManager()->GetElementFactory(TElement::GetElementTypeName())->Create());
 				}
 				IElementFactory* GetFactory()override
 				{

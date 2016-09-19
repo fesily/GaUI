@@ -4,13 +4,13 @@ namespace GaUI
 {
 	namespace Element
 	{
-		GaResourceManager* g_pResourceManager = nullptr;
-		GaResourceManager* GetResourcesManager()
+		GaGraphicsResourceManager* g_pResourceManager = nullptr;
+		GaGraphicsResourceManager* GetGraphicsResourcesManager()
 		{
 			return g_pResourceManager;
 		}
 
-		void SetResourcesManager(GaResourceManager* manager)
+		void SetGraphicsResourcesManager(GaGraphicsResourceManager* manager)
 		{
 			g_pResourceManager = manager;
 		}
@@ -26,17 +26,17 @@ namespace GaUI
 			return false;
 		}
 
-		GaResourceManager::GaResourceManager()
+		GaGraphicsResourceManager::GaGraphicsResourceManager()
 		{
 
 		}
 
-		GaResourceManager::~GaResourceManager()
+		GaGraphicsResourceManager::~GaGraphicsResourceManager()
 		{
 
 		}
 
-		bool GaResourceManager::RegisterElementFactory(IElementFactory* factory)
+		bool GaGraphicsResourceManager::RegisterElementFactory(IElementFactory* factory)
 		{
 			const std::wstring& typeName = factory->GetElementTypeName();
 			if(m_listElementFactory.find(typeName) == m_listElementFactory.end())
@@ -47,7 +47,7 @@ namespace GaUI
 			return false;
 		}
 
-		bool GaResourceManager::RegisterRendererFactory(const std::wstring& typeName, IRendererFactory* factory)
+		bool GaGraphicsResourceManager::RegisterRendererFactory(const std::wstring& typeName, IRendererFactory* factory)
 		{
 			if(m_listRendererFactory .find(typeName) == m_listRendererFactory.end())
 			{
@@ -57,7 +57,7 @@ namespace GaUI
 			return false;
 		}
 
-		IElementFactory* GaResourceManager::GetElementFactory(const std::wstring& elementTypeName)
+		IElementFactory* GaGraphicsResourceManager::GetElementFactory(const std::wstring& elementTypeName)
 		{
 			auto iter = m_listElementFactory.find(elementTypeName);
 			if(iter != m_listElementFactory.end())
@@ -65,7 +65,7 @@ namespace GaUI
 			return nullptr;
 		}
 
-		IRendererFactory* GaResourceManager::GetRendererFactory(const std::wstring& elementTypeName)
+		IRendererFactory* GaGraphicsResourceManager::GetRendererFactory(const std::wstring& elementTypeName)
 		{
 			auto iter = m_listRendererFactory.find(elementTypeName);
 			if(iter != m_listRendererFactory.end())

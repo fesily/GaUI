@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GaControl.h"
 #include "Event.h"
-#include "CompositionBase.h"
+#include "GraphicesHost.h"
 namespace GaUI
 {
 	namespace Control
@@ -129,10 +129,23 @@ namespace GaUI
 		GaControlHost::GaControlHost(GaControl::IControlStyle* pStyle)
 			:GaControl(pStyle)
 		{
-
+			m_pGraphicesHost = new Layout::GaGraphicesHost;
 		}
 
 		GaControlHost::~GaControlHost()
+		{
+			SAFE_DELETE(m_pGraphicesHost);
+		}
+
+		//////////////////////////////////////////////////////////////////////////
+
+		GaWindow::GaWindow(GaControl::IControlStyle* pStyle)
+			:GaControlHost(pStyle)
+		{
+			
+		}
+
+		GaWindow::~GaWindow()
 		{
 
 		}

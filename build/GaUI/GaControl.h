@@ -5,8 +5,8 @@ namespace GaUI
 {
 	namespace Layout
 	{
-		class Composition;
 		class GaGraphicesHost;
+		class Composition;
 	}
 	namespace Event
 	{
@@ -83,7 +83,7 @@ namespace GaUI
 			void OnLButtonDown();
 			void OnLButtonUp();
 		public:
-			bool m_isPressing;	//按住状态
+			Property_put<bool> m_isPressing;	//按住状态
 			bool m_isHoving;	//悬浮状态
 			eStatus m_eStatus;	//按钮状态
 			IButtonStyle* m_pButtonStyle;//按钮的创建样式
@@ -119,10 +119,12 @@ namespace GaUI
 			Layout::GaGraphicesHost* m_pGraphicesHost;
 		};
 
-		class GaWindowControl
+		class GaWindow
 			:public GaControlHost 
 		{
-			
+			GaWindow(GaControl::IControlStyle* pStyle);
+			~GaWindow();
 		};
+
 	}
 }

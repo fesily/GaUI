@@ -183,7 +183,7 @@ namespace GaUI
 
 				virtual std::shared_ptr<Font> CreateFont(const FontProperties& font)
 				{
-
+					return nullptr;
 				}
 				virtual void DestroyFont(const FontProperties& font)
 				{

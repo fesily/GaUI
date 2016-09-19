@@ -96,6 +96,15 @@
     <ClCompile Include="NativeWindowInterface.cpp">
       <Filter>GaUI\NativeWindow</Filter>
     </ClCompile>
+    <ClCompile Include="NativeApp.cpp">
+      <Filter>GaUI\NativeWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="GraphicesHost.cpp">
+      <Filter>GaUI\Layout</Filter>
+    </ClCompile>
+    <ClCompile Include="NativeWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -196,6 +205,15 @@
     </ClInclude>
     <ClInclude Include="EventBase.h">
       <Filter>GaUI\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="NativeApp.h">
+      <Filter>GaUI\NativeWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="GraphicesHost.h">
+      <Filter>GaUI\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="NativeWindow.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

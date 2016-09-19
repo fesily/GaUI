@@ -7,7 +7,7 @@ namespace GaUI
 	{
 #if 0
 		class INativeWindow
-			:public Interface
+			:public virtual Interface
 		{
 		public:
 			enum eWindowSizeStatus
@@ -75,15 +75,20 @@ namespace GaUI
 
 		};
 #else
+		typedef ATL::CWinTraits<WS_BORDER | WS_CAPTION | WS_SIZEBOX | WS_SYSMENU | WS_POPUP | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | WS_MAXIMIZEBOX | WS_MINIMIZEBOX,
+			WS_EX_APPWINDOW | WS_EX_CONTROLPARENT> NativeWindowTraits;
 		class INativeWindow
-			:public ATL::CWindow, public Interface
+			:public CWindowImpl<INativeWindow,ATL::CWindow, NativeWindowTraits>, public virtual Interface
 		{
 		public:
-			virtual CSize GetClientSize();
+			DECLARE_WND_CLASS(NULL)
+		public:
+			virtual	CSize	GetClientSize();
+			virtual void RedrawWindow() = 0;
 		};
 #endif
 		class INativeWindowListener
-			:public Interface
+			:public virtual Interface
 		{
 			enum eHitTestResult
 			{
@@ -144,7 +149,7 @@ namespace GaUI
 		};
 
 		class INativeControllerListener
-			:public Interface
+			:public virtual Interface
 		{
 		public:
 			virtual void LeftButtonDown(const CPoint& position) {}
@@ -161,5 +166,26 @@ namespace GaUI
 			virtual void NativeWindowCreated(INativeWindow* window) {}
 			virtual void NativeWindowDestroying(INativeWindow* window) {}
 		};
+
+		//提供native窗口生存期以及查询相关操作
+		class INativeWindowServer :public virtual Interface
+		{
+		public:
+			virtual	INativeWindow*	CreateNatvieWindow() = 0;
+			virtual	void			DestroyNatvieWindow(INativeWindow* window) = 0;
+			virtual	INativeWindow*	GetMainNatvieWindow() = 0;
+			virtual	INativeWindow*	GetNatvieWindow(const CPoint& location) = 0;
+			virtual	void			Run(INativeWindow* windows) = 0;
+		};
+
+		class INativeController :public virtual Interface
+		{
+		public:
+			virtual INativeWindowServer* WindowServer() = 0;
+			virtual bool HandleMessage(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result) = 0;
+		};
+
+		extern void SetCurrentController(INativeController* controller);
+		extern INativeController* GetCurrentController();
 	}
 }

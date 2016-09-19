@@ -14,7 +14,8 @@
 #include <atlbase.h>
 #include <WTL/atlapp.h>
 
-extern CAppModule _Module;
+//extern CAppModule _Module;
+extern CAppModule* GetModule();
 
 #include <atlcom.h>
 #include <atlhost.h>
@@ -33,4 +34,3 @@ extern CAppModule _Module;
 
 #include "GaUI_Type.h"
 #include "Property.h"
-#include "GaWindow.h"

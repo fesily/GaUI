@@ -88,7 +88,7 @@ public:
 		//m_hWndClient = m_view.Create(m_hWnd, rcDefault, NULL, WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN, WS_EX_CLIENTEDGE);
 
 		// register object for message filtering and idle updates
-		CMessageLoop* pLoop = _Module.GetMessageLoop();
+		CMessageLoop* pLoop = GetModule()->GetMessageLoop();
 		ATLASSERT(pLoop != NULL);
 		pLoop->AddMessageFilter(this);
 		pLoop->AddIdleHandler(this);
@@ -100,7 +100,7 @@ public:
 	LRESULT OnDestroy(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lParam*/, BOOL& bHandled)
 	{
 		// unregister message filtering and idle updates
-		CMessageLoop* pLoop = _Module.GetMessageLoop();
+		CMessageLoop* pLoop = GetModule()->GetMessageLoop();
 		ATLASSERT(pLoop != NULL);
 		pLoop->RemoveMessageFilter(this);
 		pLoop->RemoveIdleHandler(this);

@@ -28,7 +28,7 @@ namespace GaUI
 			};
 
 			class IGDIResourceManager
-				:public Interface
+				:public virtual Interface
 			{
 			public:
 				virtual std::shared_ptr<Pen> CreatePen(const Color& cr) = 0;

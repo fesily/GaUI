@@ -11,6 +11,7 @@ namespace GaUI
 		/*
 		使用相对坐标,既子窗口的位置是父窗口客户区0,0点为坐标原点
 		*/
+		class GaGraphicesHost;
 		using namespace Element;
 		class Composition
 		{
@@ -49,14 +50,16 @@ namespace GaUI
 			std::shared_ptr<IElement> GetElement();
 			void SetElement(IElement* element);
 			void SetElement(std::shared_ptr<IElement> element);
-#if 1
+
+			GaGraphicesHost* GetRelatedGraphicesHost();
+			GaGraphicesHost* GetAssociateHost() const;
+			void SetAssociateHost(GaGraphicesHost* val);
+
 			bool GetVisible();
 			void SetVisible(bool visible);
 
 			eLimitMode GetLimitMode();
 			void SetLimitMode(eLimitMode mode);
-
-#endif
 
 			IRenderTarget* GetRenderTarget();
 			void SetRenderTarget(IRenderTarget* renderTarget);
@@ -67,28 +70,29 @@ namespace GaUI
 
 			composition* FindComposition(const CPoint& location);
 			Rect GetGlobalBrounds();
-
-
-			virtual Margin GetMargin();
-			virtual void SetMargin(Margin value);
-			virtual Margin GetInternalMargin();
-			virtual void SetInternalMargin(Margin value);
-			virtual Size GetPreferredMinSize();
-			virtual void SetPreferredMinSize(Size size);
-
-			virtual void ForceCalculateSizeImmediately();
 #endif
+
+
+			virtual CMargin GetMargin();
+			virtual void SetMargin(const CMargin&  value);
+			virtual CMargin GetInternalMargin();
+			virtual void SetInternalMargin(const CMargin& value);
+			virtual CSize GetPreferredMinSize();
+			virtual void SetPreferredMinSize(CSize size);
+
+			//virtual void ForceCalculateSizeImmediately();
 			virtual CRect GetClientArea();
 
 			virtual bool IsSizeAffectParent() = 0;
 			virtual CSize GetMinPreferredClientSize() = 0;
 			virtual CRect GetPreferredBounds() = 0;
 			virtual CRect GetBounds() = 0;
-		public:
+		protected:
 			CompositionList m_listChildren;//子容器列表
 			Composition* m_pParent;//指向父容器
 			std::shared_ptr<IElement> m_pElement;//当前容器的图元
 			IRenderTarget* m_pRenderTarget;//渲染器
+			GaGraphicesHost* m_pAssociateHost;//总管理器(当前布局器隶属的native窗口)
 			bool m_isVisible;//是否可见 
 			CMargin m_margin;//内边距
 			CMargin m_internalMargin;//外边距

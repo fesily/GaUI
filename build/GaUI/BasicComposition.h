@@ -13,7 +13,9 @@ namespace GaUI
 		{
 		public:
 			CRect GetBounds()override;
-		public:
+			GaUI::Native::INativeWindow* GetAttachedWindow() const;
+			void SetAttachedWindow(GaUI::Native::INativeWindow* val);
+		protected:
 			Native::INativeWindow*	 m_pAttachedWindow;
 		};
 

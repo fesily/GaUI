@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "CompositionBase.h"
+#include "GraphicesHost.h"
 namespace GaUI
 {
 	namespace Layout
@@ -10,6 +11,7 @@ namespace GaUI
 			, m_pRenderTarget(nullptr)
 			, m_isVisible(true)
 			, m_eLimitMode(Nolimit)
+			, m_pAssociateHost(nullptr)
 		{
 
 		}
@@ -123,6 +125,40 @@ namespace GaUI
 			}
 		}
 
+		GaGraphicesHost* Composition::GetRelatedGraphicesHost()
+		{
+			auto compositon = this;
+			while (compositon)
+			{
+				auto host = compositon->GetAssociateHost();
+				if(host)
+					return host;
+				else
+					compositon = compositon->GetParent();
+			}
+			return nullptr;
+		}
+
+		GaGraphicesHost* Composition::GetAssociateHost() const
+		{
+			return m_pAssociateHost;
+		}
+
+		void Composition::SetAssociateHost(GaGraphicesHost* val)
+		{
+			m_pAssociateHost = val;
+		}
+
+		Composition::eLimitMode Composition::GetLimitMode()
+		{
+			return m_eLimitMode;
+		}
+
+		void Composition::SetLimitMode(eLimitMode mode)
+		{
+			m_eLimitMode = mode;
+		}
+
 		IRenderTarget* Composition::GetRenderTarget()
 		{
 			return m_pRenderTarget;
@@ -184,6 +220,36 @@ namespace GaUI
 					}
 				}
 			}
+		}
+
+		GaUI::CMargin Composition::GetMargin()
+		{
+			return m_margin;
+		}
+
+		void Composition::SetMargin(const CMargin& value)
+		{
+			m_margin = value;
+		}
+
+		GaUI::CMargin Composition::GetInternalMargin()
+		{
+			return m_internalMargin;
+		}
+
+		void Composition::SetInternalMargin(const CMargin& value)
+		{
+			m_internalMargin = value;
+		}
+
+		CSize Composition::GetPreferredMinSize()
+		{
+			return m_preferredMinSize;
+		}
+
+		void Composition::SetPreferredMinSize(CSize size)
+		{
+			m_preferredMinSize = size;
 		}
 
 		CRect Composition::GetClientArea()

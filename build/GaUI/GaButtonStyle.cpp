@@ -17,8 +17,8 @@ namespace GaUI
 
 				composition = new Layout::BoundsComposition;
 				composition->SetElement(element);
-				composition->m_margin = CMargin();
-				composition->m_eLimitMode = Layout::Composition::Limit2Element;
+				composition->SetMargin(CMargin());
+				composition->SetLimitMode(Layout::Composition::Limit2Element);
 				composition->m_alignment2Parent = CMargin();
 			}
 			GaButtonElement GaButtonElement::Create(Alignment horizontal, Alignment vertical)
@@ -26,7 +26,7 @@ namespace GaUI
 				GaButtonElement button;
 				{
 					button.mainComposition = new Layout::BoundsComposition;
-					button.mainComposition->m_eLimitMode = Layout::Composition::Limit2ElementAndChildren;
+					button.mainComposition->SetLimitMode(Layout::Composition::Limit2ElementAndChildren);
 				}
 				
 				{

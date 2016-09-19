@@ -92,9 +92,15 @@ namespace GaUI
 		dc.FillSolidRect(rcWindow, 0x454548);
 		CPen pen;
 		pen.CreatePen(PS_SOLID, 1, 0xa5a5a8);
-		dc.SelectPen(pen);
+		CPenHandle hPen = dc.SelectPen(pen);
+		hPen.DeleteObject();
 		dc.MoveTo(rcWindow.left, rcWindow.bottom);
 		dc.LineTo(rcWindow.right, rcWindow.bottom);
+
+// 		CBrush brush;
+// 		brush.CreateSysColorBrush(COLOR_3DDKSHADOW);
+// 		LPCTSTR str = _T("test");
+// 		dc.GrayString(brush, nullptr, (LPARAM)str, 0, 10, 10, 200, 200);
 	}
 
 	LRESULT GaWindowNCHandler::OnNcCalcSize(BOOL wParam, LPARAM lParam, BOOL& bHandled)

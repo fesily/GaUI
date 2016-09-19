@@ -21,14 +21,14 @@ namespace GaUI
 			virtual CRect GetClipper() = 0;
 		};
 		class IRendererFactory
-			:public Interface
+			:public virtual Interface
 		{
 		public:
 			virtual IRenderer* Create() = 0;
 		};
 
 		class IRenderer 
-			:public Interface
+			:public virtual Interface
 		{
 		public:
 			virtual IRendererFactory* GetFactory() = 0;
@@ -41,7 +41,7 @@ namespace GaUI
 		};
 
 		class IElementFactory
-			:public Interface
+			:public virtual Interface
 		{
 		public:
 			virtual std::wstring GetElementTypeName() = 0;
@@ -49,7 +49,7 @@ namespace GaUI
 		};
 
 		class IElement 
-			:public Interface
+			:public virtual Interface
 		{
 		public:
 			virtual IElementFactory* GetFactory() = 0;

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "BasicComposition.h"
 #include "NativeWindowInterface.h"
+#include "ResourceManager.h"
 namespace GaUI
 {
 	namespace Layout
@@ -10,6 +11,17 @@ namespace GaUI
 		CRect WindowComposition::GetBounds()
 		{
 			return CRect(CPoint(), m_pAttachedWindow ? m_pAttachedWindow->GetClientSize() : CSize());
+		}
+
+		GaUI::Native::INativeWindow* WindowComposition::GetAttachedWindow() const
+		{
+			return m_pAttachedWindow;
+		}
+
+		void WindowComposition::SetAttachedWindow(GaUI::Native::INativeWindow* val)
+		{
+			m_pAttachedWindow = val;
+			SetRenderTarget(m_pAttachedWindow ? GetGraphicsResourcesManager()->GetRenderTarget(m_pAttachedWindow) : nullptr);
 		}
 
 		//////////////////////////////////////////////////////////////////////////

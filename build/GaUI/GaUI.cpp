@@ -13,12 +13,19 @@
 #include "aboutdlg.h"
 #include "MainFrm.h"
 
-CAppModule _Module;
+#include "NativeApp.h"
+#include "NativeWindow.h"
 
+GaUI::Native::GaApplication _Module;
+CAppModule* GetModule()
+{
+	return &_Module;
+}
 int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 {
-	CMessageLoop theLoop;
-	_Module.AddMessageLoop(&theLoop);
+	GaUI::Native::SetApplication(&_Module);
+	auto controller = GaUI::Native::InitializeWindowNativeController(_Module.get_m_hInst());
+	GaUI::Native::SetCurrentController(controller);
 
 	CMainFrame wndMain;
 
@@ -30,10 +37,10 @@ int Run(LPTSTR /*lpstrCmdLine*/ = NULL, int nCmdShow = SW_SHOWDEFAULT)
 
 	wndMain.ShowWindow(nCmdShow);
 
-	int nRet = theLoop.Run();
+	_Module.Run(reinterpret_cast<GaUI::Native::INativeWindow*>(&wndMain));
 
-	_Module.RemoveMessageLoop();
-	return nRet;
+	GaUI::Native::UninitizlizeWindowNativeController(controller);
+	return 0;
 }
 
 int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE /*hPrevInstance*/, LPTSTR lpstrCmdLine, int nCmdShow)
